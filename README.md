@@ -10,6 +10,10 @@ php artisan key:generate
 php artisan migrate --seed
 
 
+project includes file named installingnginx 
+how you can install nginx
+
+
 
 
 

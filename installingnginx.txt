@@ -1,0 +1,86 @@
+to install nginx you must have  ubunt linux
+
+1- sudo apt update
+2- sudo apt upgrade
+
+installing nginx : sudo apt install nginx
+
+to verify : nginx -v
+
+to run web server  : sudo systemctl start nginx
+
+to stop web server : sudo systemctl stop nginx
+
+to reload web server: sudo systemctl reload nginx
+
+to disable web server: sudo systemctl disable nginx
+
+to enable web server: sudo systemctl enable nginx
+
+to status web server: sudo systemctl status nginx
+
+you have to allow both http and https on the UfW firewall
+
+run this command : sudo ufw allow 'nginx full'
+
+create a directory undar /var/www/. :
+sudo mkdir -p /var/www/your doamin/html
+
+set the permission and ownership :
+ sudo chown $user:$user /var/www/your doamin
+ sudo chmod 755 /var/www/yourdomain
+
+ create an index file test :
+ sudo nano /var/www/yourdomain/html/index.html
+
+ create server block configuration :
+ sudo nano /etc/nginx/sites-available/yourdomain
+
+Create symbolic link of the configuration file :
+sudo ln -s /etc/nginx/sites-available/exampledomain.com /etc/nginx/sites-enabled
+
+
+Restart the Nginx Service :
+sudo systemctl restart nginx
+
+
+Add the host file entry. Edit the file /etc/hosts in nano editor  :
+sudo nano /etc/hosts
+
+
+Create a CSR, submit the CSR to a Certificate Authority, and download the certificate with its private key.
+
+
+Create a CSR for the site with a private key.
+This command will create two files exampledomain.com.csr
+and exampledomain.com.key.
+
+openssl req -new -newkey rsa:2048
+-nodes -keyout exampledomain.com.key
+-out exampledomain.com.csr
+
+Submit the content of the CSR to your internal
+ or public Certificate Authority to sign the certificate.
+  Once the CA issues the certificate download
+  it to /etc/nginx/ssl/exampledomain.com/ directory on your Nginx server
+
+
+Configure the Nginx configuration
+file with the SSL/TLS certificate and private key.
+
+
+run : sudo nano /etc/nginx/sites-available/exampledomain.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+s
